@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المطاعم | Restaurants</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/restaurants.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <nav class="nav-container">
+            <div class="logo">
+                <h1>مطاعم مصر</h1>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">الرئيسية</a>
+                <a href="restaurants.html" class="active">المطاعم</a>
+                <a href="bloggers.html">الفود بلوجرز</a>
+                <a href="contact.html">اتصل بنا</a>
+            </div>
+            <div class="language-switch">
+                <button class="lang-btn" onclick="toggleLanguage()">English</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Filters Section -->
+    <section class="filters-section">
+        <div class="filters-container">
+            <div class="search-filter">
+                <input type="text" placeholder="ابحث عن مطعم...">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="filter-options">
+                <select class="filter-select" id="cuisine-filter">
+                    <option value="">نوع المطبخ</option>
+                    <option value="egyptian">مصري</option>
+                    <option value="italian">إيطالي</option>
+                    <option value="chinese">صيني</option>
+                    <option value="indian">هندي</option>
+                </select>
+                <select class="filter-select" id="location-filter">
+                    <option value="">المنطقة</option>
+                    <option value="cairo">القاهرة</option>
+                    <option value="alexandria">الإسكندرية</option>
+                    <option value="giza">الجيزة</option>
+                </select>
+                <select class="filter-select" id="rating-filter">
+                    <option value="">التقييم</option>
+                    <option value="5">5 نجوم</option>
+                    <option value="4">4 نجوم وأعلى</option>
+                    <option value="3">3 نجوم وأعلى</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Restaurants Grid -->
+    <section class="restaurants-grid">
+        <div class="restaurant-card">
+            <div class="restaurant-image">
+                <img src="images/restaurants/restaurant1.jpg" alt="مطعم 1">
+                <div class="restaurant-rating">
+                    <span class="rating">4.5</span>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="restaurant-info">
+                <h3>مطعم الأهرام</h3>
+                <p class="cuisine">مطبخ مصري</p>
+                <p class="location"><i class="fas fa-map-marker-alt"></i> القاهرة، مصر الجديدة</p>
+                <div class="restaurant-features">
+                    <span><i class="fas fa-phone"></i> 0123456789</span>
+                    <span><i class="fas fa-clock"></i> 24 ساعة</span>
+                </div>
+                <div class="restaurant-actions">
+                    <button class="view-menu-btn">قائمة الطعام</button>
+                    <button class="view-map-btn">عرض على الخريطة</button>
+                </div>
+            </div>
+        </div>
+        <!-- More restaurant cards will be added dynamically -->
+    </section>
+
+    <!-- Restaurant Details Modal -->
+    <div class="modal" id="restaurant-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>روابط سريعة</h3>
+                <ul>
+                    <li><a href="#">عن الموقع</a></li>
+                    <li><a href="#">سياسة الخصوصية</a></li>
+                    <li><a href="#">الشروط والأحكام</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>تواصل معنا</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة © 2024 مطاعم مصر</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/restaurants.js"></script>
+</body>
+</html> 

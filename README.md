@@ -1,100 +1,167 @@
-# مطاعم مصر | Egyptian Restaurants
+# مطاعم مصر | Egyptian Restaurants Guide
 
-موقع تقييم المطاعم في مصر | Restaurant Review Platform for Egypt
+موقع إلكتروني شامل لتقييم واستكشاف المطاعم في مصر مع دعم اللغتين العربية والإنجليزية.
 
-## الوصف | Description
+A comprehensive web platform for discovering and rating restaurants across Egypt with bilingual support (Arabic/English).
 
-منصة شاملة لتقييم المطاعم في جميع أنحاء مصر، تتيح للمستخدمين استكشاف وتقييم المطاعم، ومشاركة تجاربهم، والتفاعل مع محتوى الفود بلوجرز.
+## 🌟 المميزات الرئيسية | Key Features
 
-A comprehensive platform for reviewing restaurants across Egypt, allowing users to explore and rate restaurants, share their experiences, and interact with food blogger content.
+### 🍽️ **Restaurant Discovery**
+- 🔍 بحث متقدم عن المطاعم حسب الموقع والنوع والتقييم
+- 🗺️ خرائط تفاعلية لمواقع المطاعم
+- 📱 تصميم متجاوب مع جميع الأجهزة
+- ⭐ نظام تقييم متكامل مع النجوم والتعليقات
 
-## المميزات الرئيسية | Key Features
+### 🌍 **Bilingual Support**
+- 🇪🇬 دعم كامل للغة العربية مع اتجاه RTL
+- 🇺🇸 دعم كامل للغة الإنجليزية مع اتجاه LTR
+- 🔄 تبديل سلس بين اللغتين
+- 📝 ترجمة شاملة لجميع المحتويات
 
-- 🔍 بحث متقدم عن المطاعم | Advanced restaurant search
-- 📍 خرائط تفاعلية | Interactive maps
-- ⭐ نظام تقييم | Rating system
-- 📱 دعم متعدد اللغات (العربية والإنجليزية) | Multi-language support (Arabic & English)
-- 📸 مشاركة الصور والفيديوهات | Photo and video sharing
-- 🔗 تكامل مع وسائل التواصل الاجتماعي | Social media integration
-- 🎯 تصنيفات خاصة (حلال، نباتي) | Special categories (Halal, Vegetarian)
-- 💫 نظام نقاط ومكافآت | Points and rewards system
+### 📱 **User Experience**
+- 🎨 تصميم عصري وجذاب
+- ⚡ أداء سريع ومحسن
+- 🔧 سهولة الاستخدام والتنقل
+- 📸 دعم الصور والفيديوهات عالية الجودة
 
-## التقنيات المستخدمة | Technologies Used
+### 👥 **Community Features**
+- 📝 تقييمات الفود بلوجرز
+- 💬 نظام تعليقات تفاعلي
+- 📱 تكامل مع وسائل التواصل الاجتماعي
+- 🤝 مشاركة التجارب والآراء
+
+## 🛠️ التقنيات المستخدمة | Technologies Used
 
 ### Frontend
-- React.js
-- HTML5
-- CSS3
-- JavaScript
-- Material-UI
-- Google Maps API
+- **HTML5** - Semantic markup and structure
+- **CSS3** - Modern styling with CSS Grid and Flexbox
+- **JavaScript (ES6+)** - Interactive functionality and dynamic content
+- **Font Awesome** - Icon library
+- **Google Fonts** - Typography (Cairo, Roboto)
 
-### Backend
-- Laravel
-- PHP
-- MySQL
-- RESTful API
+### Backend (Planned)
+- **PHP (Laravel)** - Server-side framework
+- **MySQL** - Database management
+- **RESTful APIs** - Data communication
 
-### Social Media Integration
-- Instagram API
-- TikTok API
-- YouTube API
-- Facebook API
+### Development Tools
+- **Git** - Version control
+- **VS Code** - Code editor
+- **Responsive Design** - Mobile-first approach
 
-## متطلبات التشغيل | Requirements
+## 📁 هيكل المشروع | Project Structure
 
-- Node.js >= 14.x
-- PHP >= 8.0
-- Composer
-- MySQL >= 8.0
-- Laravel >= 9.0
-
-## التثبيت | Installation
-
-1. Clone the repository
-```bash
-git clone [repository-url]
+```
+المطعم/
+├── index.html              # الصفحة الرئيسية
+├── restaurants.html        # صفحة المطاعم
+├── bloggers.html          # صفحة الفود بلوجرز
+├── contact.html           # صفحة التواصل
+├── italian-restaurant.html # صفحة مطعم إيطالي نموذجية
+├── css/                   # ملفات التنسيق
+│   ├── style.css         # التنسيق الرئيسي
+│   ├── restaurants.css   # تنسيق صفحة المطاعم
+│   ├── bloggers.css      # تنسيق صفحة الفود بلوجرز
+│   ├── contact.css       # تنسيق صفحة التواصل
+│   └── italian-style.css # تنسيق المطعم الإيطالي
+├── js/                    # ملفات الجافا سكريبت
+│   ├── main.js           # الوظائف الرئيسية
+│   ├── restaurants.js    # وظائف صفحة المطاعم
+│   ├── bloggers.js       # وظائف صفحة الفود بلوجرز
+│   └── contact.js        # وظائف صفحة التواصل
+├── images/               # الصور والرسومات
+├── README.md             # ملف المشروع
+└── .gitignore           # ملف تجاهل Git
 ```
 
-2. Install frontend dependencies
-```bash
-cd frontend
-npm install
-```
+## 🚀 التثبيت والتشغيل | Installation & Setup
 
-3. Install backend dependencies
-```bash
-cd backend
-composer install
-```
+### المتطلبات | Prerequisites
+- متصفح ويب حديث (Chrome, Firefox, Safari, Edge)
+- خادم ويب محلي (للتطوير)
 
-4. Configure environment variables
-```bash
-cp .env.example .env
-```
+### خطوات التثبيت | Installation Steps
 
-5. Run database migrations
-```bash
-php artisan migrate
-```
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/mohamedatefmh/restaurantapp.git
+   cd restaurantapp
+   ```
 
-6. Start the development servers
-```bash
-# Frontend
-npm run dev
+2. **Open in browser**
+   - افتح ملف `index.html` في متصفحك
+   - أو استخدم خادم ويب محلي مثل Live Server
 
-# Backend
-php artisan serve
-```
+3. **Development setup**
+   ```bash
+   # Install Live Server (VS Code extension)
+   # Or use Python's built-in server
+   python -m http.server 8000
+   ```
 
-## المساهمة | Contributing
+## 🎯 الاستخدام | Usage
 
-نرحب بمساهماتكم! يرجى قراءة دليل المساهمة للمزيد من المعلومات.
+### للمستخدمين | For Users
+1. **استكشاف المطاعم**: تصفح قائمة المطاعم المتاحة
+2. **البحث**: استخدم شريط البحث للعثور على مطاعم محددة
+3. **التقييم**: اقرأ تقييمات المستخدمين والفود بلوجرز
+4. **التواصل**: اتصل بالمطاعم أو اترك تعليقك
 
-Contributions are welcome! Please read the contributing guide for more information.
+### للمطورين | For Developers
+1. **التطوير**: قم بتعديل الملفات حسب احتياجاتك
+2. **إضافة محتوى**: أضف مطاعم جديدة أو صفحات إضافية
+3. **التخصيص**: عدّل التصميم والوظائف حسب المتطلبات
 
-## الترخيص | License
+## 🔧 التخصيص | Customization
 
-هذا المشروع مرخص تحت رخصة MIT.
+### إضافة مطعم جديد | Adding a New Restaurant
+1. أنشئ صفحة HTML جديدة للمطعم
+2. أضف التنسيقات المطلوبة في CSS
+3. أضف الوظائف التفاعلية في JavaScript
+4. اربط الصفحة بالتنقل الرئيسي
 
-This project is licensed under the MIT License.
+### تعديل التصميم | Modifying Design
+- عدّل متغيرات CSS في `:root`
+- أضف تنسيقات جديدة في ملفات CSS المناسبة
+- تأكد من التوافق مع التصميم المتجاوب
+
+## 🤝 المساهمة | Contributing
+
+نرحب بمساهماتكم في تطوير الموقع! يرجى اتباع الخطوات التالية:
+
+1. **Fork the repository**
+2. **Create a feature branch**
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+3. **Make your changes**
+4. **Test thoroughly**
+5. **Submit a pull request**
+
+### إرشادات المساهمة | Contribution Guidelines
+- اتبع معايير الترميز المتبعة
+- تأكد من عمل الموقع على جميع المتصفحات
+- اختبر التصميم المتجاوب
+- أضف تعليقات توضيحية للكود
+
+## 📝 الترخيص | License
+
+هذا المشروع مرخص تحت رخصة MIT. راجع ملف `LICENSE` للتفاصيل.
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.
+
+## 📞 التواصل | Contact
+
+- **GitHub**: [mohamedatefmh](https://github.com/mohamedatefmh)
+- **Email**: [أضف بريدك الإلكتروني هنا]
+- **Website**: [رابط الموقع عند النشر]
+
+## 🙏 الشكر والتقدير | Acknowledgments
+
+- شكراً لجميع المساهمين في المشروع
+- شكراً لمجتمع المطورين العرب
+- شكراً لجميع المطاعم والمستخدمين
+
+---
+
+**Made with ❤️ for the Egyptian restaurant community**

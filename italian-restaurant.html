@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trattoria delizioso</title>
+    <link rel="stylesheet" href="css/italian-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container nav-flex">
+            <div class="logo">Trattoria delizioso</div>
+            <nav>
+                <a href="#">HOME</a>
+                <a href="#menu">RESTAURANT MENU</a>
+                <a href="#about">ABOUT</a>
+                <a href="#more">MORE</a>
+            </nav>
+        </div>
+    </header>
+    <section class="hero-italian">
+        <div class="container hero-flex">
+            <div class="hero-text">
+                <h1>Experience the Flavors of Italy</h1>
+                <p>Authentic Italian cuisine just a click away!</p>
+                <a href="#order" class="order-btn">ORDER NOW</a>
+            </div>
+            <div class="hero-img">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="Pasta on fork">
+            </div>
+        </div>
+    </section>
+    <!-- Menu Section -->
+    <section class="menu-section" id="menu">
+        <div class="container">
+            <h2>Our Menu</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80" alt="Pizza Margherita">
+                    <h3>Pizza Margherita</h3>
+                    <p>Classic pizza with tomato, mozzarella, and basil.</p>
+                    <span class="price">$12</span>
+                </div>
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=400&q=80" alt="Spaghetti Carbonara">
+                    <h3>Spaghetti Carbonara</h3>
+                    <p>Creamy pasta with pancetta, egg, and parmesan.</p>
+                    <span class="price">$14</span>
+                </div>
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1523987355523-c7b5b0723c6a?auto=format&fit=crop&w=400&q=80" alt="Tiramisu">
+                    <h3>Tiramisu</h3>
+                    <p>Classic Italian dessert with coffee and mascarpone.</p>
+                    <span class="price">$7</span>
+                </div>
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=400&q=80" alt="Bruschetta">
+                    <h3>Bruschetta</h3>
+                    <p>Grilled bread with tomatoes, garlic, and olive oil.</p>
+                    <span class="price">$6</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container about-flex">
+            <div class="about-text">
+                <h2>About Trattoria delizioso</h2>
+                <p>Founded in 1998, our trattoria brings the heart of Italy to your table. We use only the freshest ingredients and traditional recipes passed down through generations. Join us for an authentic Italian experience!</p>
+            </div>
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="Restaurant interior">
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2>What Our Customers Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <p>"The best Italian food I've ever had! The pasta was perfect."</p>
+                    <span>- Sarah M.</span>
+                </div>
+                <div class="testimonial">
+                    <p>"Amazing atmosphere and friendly staff. Highly recommend!"</p>
+                    <span>- John D.</span>
+                </div>
+                <div class="testimonial">
+                    <p>"Authentic flavors and great service. Will come again!"</p>
+                    <span>- Emily R.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Reservation Section -->
+    <section class="reservation-section" id="order">
+        <div class="container">
+            <h2>Reserve a Table</h2>
+            <form class="reservation-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Email" required>
+                <input type="tel" placeholder="Phone" required>
+                <input type="date" required>
+                <input type="time" required>
+                <button type="submit">Book Now</button>
+            </form>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container contact-flex">
+            <div class="contact-info">
+                <h2>Contact Us</h2>
+                <p><strong>Address:</strong> 123 Italian St, Rome, Italy</p>
+                <p><strong>Email:</strong> info@trattoriadelizioso.com</p>
+                <p><strong>Phone:</strong> +39 123 456 7890</p>
+                <p><strong>Hours:</strong> Mon-Sun: 12pm - 11pm</p>
+            </div>
+            <div class="contact-map">
+                <iframe src="https://www.google.com/maps?q=rome,+italy&output=embed" width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer-italian">
+        <div class="container footer-flex">
+            <div>
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#order">Reservation</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><span>Facebook</span></a>
+                    <a href="#"><span>Instagram</span></a>
+                    <a href="#"><span>Twitter</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Trattoria delizioso. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html> 
