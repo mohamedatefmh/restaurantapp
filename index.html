@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="title">مطاعم مصر - اكتشف أفضل المطاعم في مصر</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --primary-color: #FFD700; /* Yellow */
+            --secondary-color: #000000; /* Black */
+            --text-color: #FFFFFF; /* White */
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+        }
+
+        .navbar {
+            background-color: var(--secondary-color) !important;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .navbar-brand, .nav-link {
+            color: var(--text-color) !important;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color) !important;
+            border-color: var(--primary-color) !important;
+            color: var(--secondary-color) !important;
+        }
+
+        .btn-primary:hover {
+            background-color: #FFC800 !important;
+            border-color: #FFC800 !important;
+        }
+
+        .btn-outline-light {
+            color: var(--primary-color) !important;
+            border-color: var(--primary-color) !important;
+        }
+
+        .btn-outline-light:hover {
+            background-color: var(--primary-color) !important;
+            color: var(--secondary-color) !important;
+        }
+
+        .btn-light {
+            background-color: var(--primary-color) !important;
+            border-color: var(--primary-color) !important;
+            color: var(--secondary-color) !important;
+        }
+
+        .btn-light:hover {
+            background-color: #FFC800 !important;
+            border-color: #FFC800 !important;
+        }
+
+        .card {
+            background-color: var(--secondary-color);
+            border: 1px solid var(--primary-color);
+            color: var(--text-color);
+        }
+
+        .card-title {
+            color: var(--primary-color);
+        }
+
+        .bg-light {
+            background-color: var(--secondary-color) !important;
+            color: var(--text-color);
+        }
+
+        .text-warning {
+            color: var(--primary-color) !important;
+        }
+
+        .features-section {
+            background-color: var(--secondary-color);
+            padding: 80px 0;
+            color: var(--text-color);
+        }
+
+        .feature-box {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .feature-box i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .feature-box h4 {
+            color: var(--primary-color);
+        }
+
+        footer {
+            background-color: var(--secondary-color) !important;
+            border-top: 2px solid var(--primary-color);
+        }
+
+        footer a {
+            color: var(--primary-color) !important;
+        }
+
+        footer a:hover {
+            color: #FFC800 !important;
+        }
+
+        .social-links a {
+            color: var(--primary-color) !important;
+        }
+
+        .social-links a:hover {
+            color: #FFC800 !important;
+        }
+
+        .language-switcher .btn {
+            color: var(--primary-color) !important;
+            border-color: var(--primary-color) !important;
+        }
+
+        .language-switcher .btn.active {
+            background-color: var(--primary-color) !important;
+            color: var(--secondary-color) !important;
+        }
+
+        [dir="ltr"] {
+            font-family: 'Arial', sans-serif;
+        }
+    </style>
+    <script>
+        function toggleLanguage() {
+            try {
+                const currentLang = document.documentElement.lang;
+                const newLang = currentLang === 'ar' ? 'en' : 'ar';
+                switchLanguage(newLang);
+            } catch (error) {
+                console.error('Error toggling language:', error);
+            }
+        }
+
+        function switchLanguage(lang) {
+            try {
+                if (!lang || !['ar', 'en'].includes(lang)) {
+                    throw new Error('Invalid language code');
+                }
+
+                document.documentElement.lang = lang;
+                document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+                
+                // تحديث نص زر اللغة
+                const langButton = document.querySelector('.language-switcher .btn span');
+                if (langButton) {
+                    langButton.textContent = lang === 'ar' ? 'English' : 'عربي';
+                }
+                
+                // تحديث النصوص المترجمة
+                document.querySelectorAll('[data-translate]').forEach(element => {
+                    const key = element.getAttribute('data-translate');
+                    if (!translations[lang]) {
+                        console.warn(`Translations not found for language: ${lang}`);
+                        return;
+                    }
+                    if (translations[lang][key]) {
+                        element.textContent = translations[lang][key];
+                    } else {
+                        console.warn(`Translation missing for key: ${key} in language: ${lang}`);
+                    }
+                });
+                
+                // حفظ اللغة المفضلة
+                try {
+                    localStorage.setItem('preferredLanguage', lang);
+                } catch (storageError) {
+                    console.warn('Could not save language preference:', storageError);
+                }
+
+                // إرسال حدث تغيير اللغة
+                document.dispatchEvent(new CustomEvent('languageChanged', { 
+                    detail: { lang } 
+                }));
+            } catch (error) {
+                console.error('Error switching language:', error);
+                // Fallback to default language
+                document.documentElement.lang = 'ar';
+                document.documentElement.dir = 'rtl';
+            }
+        }
+
+        // تحميل اللغة المفضلة عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', () => {
+            try {
+                const savedLang = localStorage.getItem('preferredLanguage') || 'ar';
+                switchLanguage(savedLang);
+            } catch (error) {
+                console.error('Error loading preferred language:', error);
+            }
+        });
+
+        // Translations
+        const translations = {
+            ar: {
+                'title': 'مطاعم مصر - اكتشف أفضل المطاعم في مصر',
+                'brand': 'مطاعم مصر',
+                'home': 'الرئيسية',
+                'restaurants': 'المطاعم',
+                'offers': 'العروض',
+                'reviews': 'التقييمات',
+                'login': 'تسجيل الدخول',
+                'register': 'إنشاء حساب',
+                'hero-title': 'اكتشف أفضل المطاعم في مصر',
+                'hero-text': 'استكشف مجموعة واسعة من المطاعم المميزة، اقرأ التقييمات، واحجز طاولتك بسهولة',
+                'explore': 'استكشف الآن',
+                'featured': 'المطاعم المميزة',
+                'view-details': 'عرض التفاصيل',
+                'features.cuisine': 'تنوع المطابخ',
+                'features.cuisine-desc': 'اكتشف مجموعة متنوعة من المطابخ العالمية والمحلية',
+                'features.reviews': 'تقييمات موثوقة',
+                'features.reviews-desc': 'اقرأ تقييمات حقيقية من زبائن حقيقيين',
+                'features.offers': 'عروض حصرية',
+                'features.offers-desc': 'استمتع بأفضل العروض والخصومات على المطاعم',
+                'quick-links': 'روابط سريعة',
+                'about': 'من نحن',
+                'contact': 'اتصل بنا',
+                'privacy': 'سياسة الخصوصية',
+                'follow-us': 'تابعنا',
+                'footer-description': 'اكتشف أفضل المطاعم في مصر',
+                'current-lang': 'English'
+            },
+            en: {
+                'title': 'Egypt Restaurants - Discover the Best Restaurants in Egypt',
+                'brand': 'Egypt Restaurants',
+                'home': 'Home',
+                'restaurants': 'Restaurants',
+                'offers': 'Offers',
+                'reviews': 'Reviews',
+                'login': 'Login',
+                'register': 'Register',
+                'hero-title': 'Discover the Best Restaurants in Egypt',
+                'hero-text': 'Explore a wide range of distinguished restaurants, read reviews, and book your table easily',
+                'explore': 'Explore Now',
+                'featured': 'Featured Restaurants',
+                'view-details': 'View Details',
+                'features.cuisine': 'Diverse Cuisines',
+                'features.cuisine-desc': 'Discover a variety of international and local cuisines',
+                'features.reviews': 'Trusted Reviews',
+                'features.reviews-desc': 'Read real reviews from real customers',
+                'features.offers': 'Exclusive Offers',
+                'features.offers-desc': 'Enjoy the best offers and discounts on restaurants',
+                'quick-links': 'Quick Links',
+                'about': 'About Us',
+                'contact': 'Contact Us',
+                'privacy': 'Privacy Policy',
+                'follow-us': 'Follow Us',
+                'footer-description': 'Discover the best restaurants in Egypt',
+                'current-lang': 'عربي'
+            }
+        };
+    </script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-utensils me-2"></i>
+                <span data-translate="brand">مطاعم مصر</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html" data-translate="home">الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/restaurants.html" data-translate="restaurants">المطاعم</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/offers.html" data-translate="offers">العروض</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/reviews.html" data-translate="reviews">التقييمات</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <div class="language-switcher me-2">
+                        <button class="btn btn-outline-light" onclick="toggleLanguage()">
+                            <i class="fas fa-globe me-1"></i>
+                            <span data-translate="current-lang">English</span>
+                        </button>
+                    </div>
+                    <a href="pages/login.html" class="btn btn-outline-light me-2" data-translate="login">تسجيل الدخول</a>
+                    <a href="pages/register.html" class="btn btn-light" data-translate="register">إنشاء حساب</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="bg-light py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1 class="display-4 mb-4" data-translate="hero-title">اكتشف أفضل المطاعم في مصر</h1>
+                    <p class="lead mb-4" data-translate="hero-text">استكشف مجموعة واسعة من المطاعم المميزة، اقرأ التقييمات، واحجز طاولتك بسهولة</p>
+                    <a href="pages/restaurants.html" class="btn btn-primary btn-lg" data-translate="explore">استكشف الآن</a>
+                </div>
+                <div class="col-md-6">
+                    <img src="https://via.placeholder.com/600x400" alt="Restaurant" class="img-fluid rounded">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Restaurants -->
+    <div class="container my-5">
+        <h2 class="text-center mb-4" data-translate="featured">المطاعم المميزة</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Restaurant">
+                    <div class="card-body">
+                        <h5 class="card-title">مطعم الشرق</h5>
+                        <div class="mb-2">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star-half-alt text-warning"></i>
+                            <span class="ms-2">4.5</span>
+                        </div>
+                        <p class="card-text">أشهى المأكولات الشرقية في أجواء مميزة</p>
+                        <a href="pages/restaurants.html" class="btn btn-primary" data-translate="view-details">عرض التفاصيل</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Restaurant">
+                    <div class="card-body">
+                        <h5 class="card-title">مطعم البحر المتوسط</h5>
+                        <div class="mb-2">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="far fa-star text-warning"></i>
+                            <span class="ms-2">4.0</span>
+                        </div>
+                        <p class="card-text">أفضل المأكولات البحرية والمتوسطية</p>
+                        <a href="pages/restaurants.html" class="btn btn-primary" data-translate="view-details">عرض التفاصيل</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Restaurant">
+                    <div class="card-body">
+                        <h5 class="card-title">مطعم إيطاليانو</h5>
+                        <div class="mb-2">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <span class="ms-2">5.0</span>
+                        </div>
+                        <p class="card-text">أشهى المأكولات الإيطالية الأصيلة</p>
+                        <a href="pages/restaurants.html" class="btn btn-primary" data-translate="view-details">عرض التفاصيل</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <i class="fas fa-utensils"></i>
+                        <h4 data-translate="features.cuisine">تنوع المطابخ</h4>
+                        <p data-translate="features.cuisine-desc">اكتشف مجموعة متنوعة من المطابخ العالمية والمحلية</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <i class="fas fa-star"></i>
+                        <h4 data-translate="features.reviews">تقييمات موثوقة</h4>
+                        <p data-translate="features.reviews-desc">اقرأ تقييمات حقيقية من زبائن حقيقيين</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <i class="fas fa-percent"></i>
+                        <h4 data-translate="features.offers">عروض حصرية</h4>
+                        <p data-translate="features.offers-desc">استمتع بأفضل العروض والخصومات على المطاعم</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5 data-translate="brand">مطاعم مصر</h5>
+                    <p data-translate="footer-description">اكتشف أفضل المطاعم في مصر</p>
+                </div>
+                <div class="col-md-4">
+                    <h5 data-translate="quick-links">روابط سريعة</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light" data-translate="about">من نحن</a></li>
+                        <li><a href="#" class="text-light" data-translate="contact">اتصل بنا</a></li>
+                        <li><a href="#" class="text-light" data-translate="privacy">سياسة الخصوصية</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5 data-translate="follow-us">تابعنا</h5>
+                    <div class="social-links">
+                        <a href="#" class="text-light me-2"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-light me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-light me-2"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="menu.js"></script>
+</body>
+</html> 
